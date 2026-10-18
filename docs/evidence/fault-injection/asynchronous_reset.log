@@ -1,0 +1,5 @@
+FAIL 5280 vectors /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051940Z-ab9f20bf
+VCD info: dumpfile /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051940Z-ab9f20bf/waveform.vcd opened for output.
+FATAL: /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/tb/tb_alu_top.sv:53: Reset must be synchronous
+       Time: 52818000  Scope: tb_alu_top
+

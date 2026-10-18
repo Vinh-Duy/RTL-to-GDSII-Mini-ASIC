@@ -1,0 +1,2 @@
+python3 scripts/gate_simulate.py --exhaustive
+PASS 524320 vectors /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/gate/20261017T104107Z-0f185edb

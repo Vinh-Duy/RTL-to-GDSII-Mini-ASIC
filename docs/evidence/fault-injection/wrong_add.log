@@ -1,0 +1,5 @@
+FAIL 5280 vectors /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051940Z-c9d9c09e
+VCD info: dumpfile /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051940Z-c9d9c09e/waveform.vcd opened for output.
+FATAL: /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/tb/tb_alu_top.sv:39: Mismatch #1 a=255 b=1 op=0 got=fe expected=100
+       Time: 26000  Scope: tb_alu_top
+

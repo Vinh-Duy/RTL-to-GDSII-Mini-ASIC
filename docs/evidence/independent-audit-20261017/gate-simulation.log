@@ -1,0 +1,3 @@
+VCD info: dumpfile /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/gate/20261017T104107Z-0f185edb/waveform.vcd opened for output.
+PASS vectors=524320 reset_checks=4 latency_checks=524320
+/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/tb/tb_alu_top.sv:62: $finish called at 5243246000 (1ps)

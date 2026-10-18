@@ -1,0 +1,8 @@
+ M .github/workflows/verification.yml
+ M README.md
+ M docs/PROJECT_SUMMARY.md
+ M docs/RESULTS.md
+ M docs/VERIFICATION_REPORT.md
+?? docs/FINAL_REVIEW.md
+?? docs/evidence/github-actions-2.json
+?? docs/evidence/review-1621da9/

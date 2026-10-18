@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/Vinh-Duy/RTL-Verification-Core-ALU",
+  "commit": "1621da9b2d9d395698cc23a3dfc3ecf2e66e905d",
+  "files": {
+    "rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "verification/known_answers.csv": "1e4415b7ff495f9e616635e111db0747b9c0e1782d99e4fddb355cc94346fb27"
+  },
+  "modifications": "None. Copied byte for byte; wrapper and testbench are new. Source RTL matches committed version; unrelated source documentation has pre-existing local edits."
+}

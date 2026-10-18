@@ -1,0 +1,21 @@
+{
+  "vector_file": "reports/simulation/20261017T104044Z-b76db996/vectors.txt",
+  "total_rows": 524320,
+  "distinct_binary_inputs": 524288,
+  "per_opcode_rows": {
+    "0": 65539,
+    "1": 65541,
+    "2": 65539,
+    "3": 65543,
+    "4": 65539,
+    "5": 65539,
+    "6": 65539,
+    "7": 65541
+  },
+  "independent_oracle_mismatches": 0,
+  "waveform_bytes": 20350,
+  "waveform_has_definitions": true,
+  "waveform_timestamp_count": 303,
+  "resynthesized_netlist_matches_published": true,
+  "resynthesized_models_match_published": true
+}

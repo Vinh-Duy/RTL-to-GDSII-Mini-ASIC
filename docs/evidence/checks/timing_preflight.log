@@ -1,0 +1,3 @@
+python3 scripts/report.py --timing
+NOT RUN: no successful final timing measurement. Run make physical in a prepared environment.
+make: *** [timing] Error 2

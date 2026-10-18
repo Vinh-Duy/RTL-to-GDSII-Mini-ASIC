@@ -1,0 +1,3 @@
+python3 scripts/run_experiments.py --study baseline
+NOT RUN: OpenROAD/ORFS unavailable. Set ORFS_ROOT to a prepared pinned Linux checkout, or ORFS_IMAGE to a locally installed image digest. See docs/ENVIRONMENT.md.
+make: *** [experiments] Error 2

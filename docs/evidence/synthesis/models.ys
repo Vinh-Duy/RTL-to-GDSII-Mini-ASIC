@@ -1,0 +1,2 @@
+read_liberty -ignore_miss_func /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+write_verilog -noattr /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T090824Z-97d2c004/nangate45_functional.v

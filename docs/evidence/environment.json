@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-17",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "os": "macOS 13.7.8",
+  "build": "22H730",
+  "architecture": "x86_64",
+  "cpu": "Intel Core i5 2.3 GHz, two physical cores",
+  "ram_gb": 8,
+  "initial_available_disk_gib": 43,
+  "python": "3.10.11",
+  "iverilog": "13.0",
+  "native_yosys": false,
+  "openroad": false,
+  "docker": false,
+  "klayout": false,
+  "verilator": false,
+  "standalone_opensta": false,
+  "yowasp_yosys": "0.70.0.0.post1259",
+  "yosys_revision": "28ba3cb92",
+  "orfs_library_revision": "7bcaf475c884e15f674e428aa04dbf92bd0426ed"
+}

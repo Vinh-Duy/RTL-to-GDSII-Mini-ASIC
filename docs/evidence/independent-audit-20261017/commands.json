@@ -1,0 +1,76 @@
+[
+  {
+    "name": "rtl_checks",
+    "command": [
+      "make",
+      "lint",
+      "test",
+      "simulate",
+      "validate",
+      "exhaustive"
+    ],
+    "exit_code": 0,
+    "started": "2026-10-17T10:40:41.186727+00:00",
+    "ended": "2026-10-17T10:40:57.368301+00:00"
+  },
+  {
+    "name": "synthesis",
+    "command": [
+      "make",
+      "synth"
+    ],
+    "exit_code": 0,
+    "started": "2026-10-17T10:40:57.369431+00:00",
+    "ended": "2026-10-17T10:41:07.316084+00:00"
+  },
+  {
+    "name": "gate_exhaustive",
+    "command": [
+      "make",
+      "gate-exhaustive"
+    ],
+    "exit_code": 0,
+    "started": "2026-10-17T10:41:07.318002+00:00",
+    "ended": "2026-10-17T10:42:31.803143+00:00"
+  },
+  {
+    "name": "physical",
+    "command": [
+      "make",
+      "physical"
+    ],
+    "exit_code": 2,
+    "started": "2026-10-17T10:42:31.805373+00:00",
+    "ended": "2026-10-17T10:42:31.986643+00:00"
+  },
+  {
+    "name": "timing",
+    "command": [
+      "make",
+      "timing"
+    ],
+    "exit_code": 2,
+    "started": "2026-10-17T10:42:31.988126+00:00",
+    "ended": "2026-10-17T10:42:32.162635+00:00"
+  },
+  {
+    "name": "experiments",
+    "command": [
+      "make",
+      "experiments"
+    ],
+    "exit_code": 2,
+    "started": "2026-10-17T10:42:32.163495+00:00",
+    "ended": "2026-10-17T10:42:32.337535+00:00"
+  },
+  {
+    "name": "report",
+    "command": [
+      "make",
+      "report"
+    ],
+    "exit_code": 0,
+    "started": "2026-10-17T10:42:32.338893+00:00",
+    "ended": "2026-10-17T10:42:32.514167+00:00"
+  }
+]

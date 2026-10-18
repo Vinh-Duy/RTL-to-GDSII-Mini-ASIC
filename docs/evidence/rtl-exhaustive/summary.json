@@ -1,0 +1,72 @@
+{
+  "commands": [
+    {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_alu_top",
+        "-o",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T090814Z-94580af6/sim.vvp",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_8bit.sv",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_top.sv",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/tb/tb_alu_top.sv"
+      ],
+      "ended": "2026-10-17T09:08:15.793315+00:00",
+      "exit_code": 0,
+      "seconds": 0.145772632000444,
+      "started": "2026-10-17T09:08:15.647581+00:00",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "vvp",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T090814Z-94580af6/sim.vvp",
+        "+VECTORS=/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T090814Z-94580af6/vectors.txt",
+        "+COUNT=524320",
+        "+VCD=/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T090814Z-94580af6/waveform.vcd"
+      ],
+      "ended": "2026-10-17T09:08:24.279643+00:00",
+      "exit_code": 0,
+      "seconds": 8.48599170200032,
+      "started": "2026-10-17T09:08:15.793592+00:00",
+      "status": "PASS"
+    }
+  ],
+  "exhaustive": true,
+  "input_hashes": {
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_top.sv": "3c9d91f43226f652670a8863311747449e8af9bb84fd9ba5b3fd95a1dc144dc0"
+  },
+  "negative_test": false,
+  "seed": 2026,
+  "simulator": "Icarus Verilog version 13.0 (stable) (v13_0)\n\nCopyright (c) 2000-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Preprocessor version 13.0 (stable) (v13_0)\n\nCopyright (c) 1999-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Parser/Elaborator version 13.0 (stable) (v13_0)\n\nCopyright (c) 1998-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n FLAGS DLL vvp.tgt\nvvp.tgt: Icarus Verilog VVP Code Generator 13.0 (stable) (v13_0)\n\nCopyright (c) 2001-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.",
+  "source_hashes": {
+    "constraints/timing.sdc": "a107aecc667e4d8d2f4781c3046e2a8307b658ffccaf46b5cf2a65bb8a5d8364",
+    "flow/config.mk": "1922c1db51546d2c990eb5a34339c258e8223f9401eb3c918b7463efe84687f3",
+    "rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "rtl/alu_top.sv": "3c9d91f43226f652670a8863311747449e8af9bb84fd9ba5b3fd95a1dc144dc0",
+    "scripts/analyze_results.py": "2b593554bf83a65ac042008b89a3b4764b15382d8a5183178f284f298a18dedc",
+    "scripts/clean.py": "2eaee835469fa6bf7ec2fabcdffa47739cdbfe5b7e9373a53056c0134fe186fa",
+    "scripts/collect_metrics.py": "d18efeb48e9f492b8b6450d4ae9c5b0a124adbbc10cd1e31335b51b8d7944b56",
+    "scripts/common.py": "abd47c07a80f7e23648a4dda38881a622854396c19a930cdc1b2db3201d4e703",
+    "scripts/fetch_platform.py": "166a25a8c1ff901ae232d0a09969a70a804ed9e23aeaafc1bc0e0eeff9d83b33",
+    "scripts/gate_simulate.py": "c3f5e1660bcc9f0a9980b23f8309a7a740aadc391e89915df8e499e65530508d",
+    "scripts/inspect_gds.py": "5d84f348a83ae2b6857c0573fa7054be9d25dbf7221a2a4971c0184f7c9309c4",
+    "scripts/physical.py": "70d502adba3e0a44c499979b829c7547a815a0dbb2a6ad952f09c9e23b790ef6",
+    "scripts/report.py": "728f84a15d3e0f1204b10337f2e499f64f97a7b4257ea992dd626832e2f06960",
+    "scripts/run_experiments.py": "cb685cb0314f9e53453f65ee1dacec3d0c3e1bd54346ffa75538c88705bab2b6",
+    "scripts/run_physical_flow.sh": "8b3ec13efa56fc927863c353c5093f0fa6642c51cc651fb96ed9524bece30148",
+    "scripts/setup.sh": "c77732ad6f7c2a901df6700bc4aba12904b54150da9c742409466721e56c6f8f",
+    "scripts/simulate.py": "d100e48f8a496caf8ad32a3741538e352edf44bad99e064c7de53a94c1292bc1",
+    "scripts/simulate.sh": "079f065a469560ebed0c69008d91ab1c27dbc5407ee0f0d0507b42a21fe68007",
+    "scripts/synthesize.py": "0553a18f75e1c61e7259b7bec2768a6b33c43d8cecda4aa53ebe26e8aca3b031",
+    "scripts/synthesize.sh": "481a2b32b67bbbac449d722d482132593a6e8f569af0ee139be2b0aa575f684a",
+    "scripts/validate.py": "a32b51a7af443d4afc46fa3efc1aa407fa16de8cdc1a49f82f5b8a846a2812d5",
+    "tb/known_answers.csv": "1e4415b7ff495f9e616635e111db0747b9c0e1782d99e4fddb355cc94346fb27",
+    "tb/tb_alu_top.sv": "aa94422852d74e41e4efb11a0d6ba2d05a8fb517677436975041d4d6d0986d92"
+  },
+  "status": "PASS",
+  "vectors": 524320
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "Isolated stale-evidence test using a copy of a real PASS summary; not physical experiment data",
+  "changed_input": "tb/known_answers.csv: add_zero expected changed 0->1",
+  "report_exit_code": 0,
+  "report_status": "PASS",
+  "fresh_verification_exit_code": 1,
+  "fresh_verification_error": "Traceback (most recent call last):\n  File \"/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/audit/independent-20261017T104041Z-9ee2bcd4/freshness-fixture/scripts/simulate.py\", line 44, in <module>\n    if __name__==\"__main__\":sys.exit(main())\n  File \"/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/audit/independent-20261017T104041Z-9ee2bcd4/freshness-fixture/scripts/simulate.py\", line 18, in main\n    assert reference(a,b,op)==e\nAssertionError"
+}

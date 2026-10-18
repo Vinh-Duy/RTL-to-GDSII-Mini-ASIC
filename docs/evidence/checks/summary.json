@@ -1,0 +1,101 @@
+{
+  "checks": [
+    {
+      "execution": {
+        "command": [
+          "make",
+          "lint"
+        ],
+        "ended": "2026-10-17T09:11:34.768877+00:00",
+        "exit_code": 0,
+        "seconds": 0.12742051599707338,
+        "started": "2026-10-17T09:11:34.641482+00:00",
+        "status": "PASS"
+      },
+      "expected_exit_code": 0,
+      "name": "lint",
+      "test_status": "PASS"
+    },
+    {
+      "execution": {
+        "command": [
+          "make",
+          "test"
+        ],
+        "ended": "2026-10-17T09:11:35.682800+00:00",
+        "exit_code": 0,
+        "seconds": 0.9136304000021482,
+        "started": "2026-10-17T09:11:34.769171+00:00",
+        "status": "PASS"
+      },
+      "expected_exit_code": 0,
+      "name": "runner_tests",
+      "test_status": "PASS"
+    },
+    {
+      "execution": {
+        "command": [
+          "make",
+          "physical"
+        ],
+        "ended": "2026-10-17T09:11:35.995858+00:00",
+        "exit_code": 2,
+        "seconds": 0.312824290998833,
+        "started": "2026-10-17T09:11:35.683047+00:00",
+        "status": "FAIL"
+      },
+      "expected_exit_code": 2,
+      "name": "physical_preflight",
+      "test_status": "PASS"
+    },
+    {
+      "execution": {
+        "command": [
+          "make",
+          "timing"
+        ],
+        "ended": "2026-10-17T09:11:36.239231+00:00",
+        "exit_code": 2,
+        "seconds": 0.24315786800070782,
+        "started": "2026-10-17T09:11:35.996107+00:00",
+        "status": "FAIL"
+      },
+      "expected_exit_code": 2,
+      "name": "timing_preflight",
+      "test_status": "PASS"
+    },
+    {
+      "execution": {
+        "command": [
+          "make",
+          "experiments"
+        ],
+        "ended": "2026-10-17T09:11:36.364085+00:00",
+        "exit_code": 2,
+        "seconds": 0.12470976399708888,
+        "started": "2026-10-17T09:11:36.239442+00:00",
+        "status": "FAIL"
+      },
+      "expected_exit_code": 2,
+      "name": "experiments_preflight",
+      "test_status": "PASS"
+    },
+    {
+      "execution": {
+        "command": [
+          "make",
+          "help"
+        ],
+        "ended": "2026-10-17T09:11:36.404751+00:00",
+        "exit_code": 0,
+        "seconds": 0.03991563100134954,
+        "started": "2026-10-17T09:11:36.364871+00:00",
+        "status": "PASS"
+      },
+      "expected_exit_code": 0,
+      "name": "help",
+      "test_status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

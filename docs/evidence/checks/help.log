@@ -1,0 +1,2 @@
+setup simulate exhaustive synth gate gate-exhaustive validate lint test physical timing experiments report clean
+Physical: source prepared ORFS env.sh and set ORFS_ROOT; see docs/ENVIRONMENT.md

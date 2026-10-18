@@ -1,0 +1,12 @@
+read_liberty -lib /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+read_verilog -sv rtl/alu_8bit.sv rtl/alu_top.sv
+hierarchy -check -top alu_top
+synth -top alu_top -flatten -noabc
+dfflibmap -liberty /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+abc -liberty /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+clean
+delete t:$scopeinfo
+check -assert
+tee -o /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T090824Z-97d2c004/stat.json stat -json -liberty /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+write_verilog -noattr -noexpr /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T090824Z-97d2c004/alu_top_mapped.v
+write_json /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T090824Z-97d2c004/netlist.json

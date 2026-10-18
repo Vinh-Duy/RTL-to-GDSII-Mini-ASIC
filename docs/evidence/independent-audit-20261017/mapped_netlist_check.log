@@ -1,0 +1,128 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+
+-- Executing script file `/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/audit/independent-20261017T104041Z-9ee2bcd4/mapped_netlist_check.ys' --
+
+1. Executing Liberty frontend: /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib
+Imported 135 cell types from liberty file.
+
+2. Executing Verilog-2005 frontend: /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T104057Z-fb67d182/alu_top_mapped.v
+Parsing Verilog input from `/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T104057Z-fb67d182/alu_top_mapped.v' to AST representation.
+Generating RTLIL representation for module `\alu_top'.
+Successfully finished Verilog frontend.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \alu_top
+
+3.2. Analyzing design hierarchy..
+Top module:  \alu_top
+Removed 0 unused modules.
+
+4. Executing CHECK pass (checking for obvious problems).
+Checking module alu_top...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)",
+   "invocation": "stat -json -liberty /Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.tools/NangateOpenCellLibrary_typical.lib ",
+   "modules": {
+      "\\alu_top": {
+         "num_wires":         756,
+         "num_wire_bits":     835,
+         "num_pub_wires":     756,
+         "num_pub_wire_bits": 835,
+         "num_ports":         6,
+         "num_port_bits":     37,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         744,
+         "num_submodules":       0,
+         "area":              879.928000,
+         "sequential_area":    72.352000,
+         "num_cells_by_type": {
+            "AND2_X1": 37,
+            "AND3_X1": 8,
+            "AND4_X1": 2,
+            "AOI211_X1": 26,
+            "AOI21_X1": 62,
+            "AOI221_X1": 15,
+            "AOI222_X1": 1,
+            "AOI22_X1": 14,
+            "DFF_X1": 16,
+            "INV_X1": 44,
+            "MUX2_X1": 19,
+            "NAND2_X1": 113,
+            "NAND3_X1": 28,
+            "NAND4_X1": 5,
+            "NOR2_X1": 99,
+            "NOR3_X1": 13,
+            "NOR4_X1": 4,
+            "OAI211_X1": 12,
+            "OAI21_X1": 61,
+            "OAI221_X1": 5,
+            "OAI22_X1": 7,
+            "OAI33_X1": 3,
+            "OR2_X1": 27,
+            "OR3_X1": 12,
+            "OR4_X1": 1,
+            "XNOR2_X1": 57,
+            "XOR2_X1": 53
+         }
+      }
+   },
+      "design": {
+         "num_wires":         756,
+         "num_wire_bits":     835,
+         "num_pub_wires":     756,
+         "num_pub_wire_bits": 835,
+         "num_ports":         6,
+         "num_port_bits":     37,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         744,
+         "num_submodules":       0,
+         "area":              879.928000,
+         "sequential_area":    72.352000,
+         "num_cells_by_type": {
+            "AND2_X1": 37,
+            "AND3_X1": 8,
+            "AND4_X1": 2,
+            "AOI211_X1": 26,
+            "AOI21_X1": 62,
+            "AOI221_X1": 15,
+            "AOI222_X1": 1,
+            "AOI22_X1": 14,
+            "DFF_X1": 16,
+            "INV_X1": 44,
+            "MUX2_X1": 19,
+            "NAND2_X1": 113,
+            "NAND3_X1": 28,
+            "NAND4_X1": 5,
+            "NOR2_X1": 99,
+            "NOR3_X1": 13,
+            "NOR4_X1": 4,
+            "OAI211_X1": 12,
+            "OAI21_X1": 61,
+            "OAI221_X1": 5,
+            "OAI22_X1": 7,
+            "OAI33_X1": 3,
+            "OR2_X1": 27,
+            "OR3_X1": 12,
+            "OR4_X1": 1,
+            "XNOR2_X1": 57,
+            "XOR2_X1": 53
+         }
+      }
+}
+
+End of script. Logfile hash: f40a21b2db, time: 0.47s, user: 0.47s, system: 0.00s
+Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+Time spent: 40% 1x stat (0 sec), 36% 2x read_liberty (0 sec), ...

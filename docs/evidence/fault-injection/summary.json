@@ -1,0 +1,76 @@
+{
+  "checks": [
+    {
+      "execution": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+          "scripts/simulate.py",
+          "--corrupt-expected"
+        ],
+        "ended": "2026-10-17T05:19:39.898821+00:00",
+        "exit_code": 1,
+        "seconds": 0.35107150299973,
+        "started": "2026-10-17T05:19:39.547782+00:00",
+        "status": "FAIL"
+      },
+      "expected": "Simulator rejects injected fault",
+      "status": "PASS",
+      "test": "corrupt_expectation"
+    },
+    {
+      "execution": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+          "scripts/simulate.py",
+          "--rtl",
+          "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/validation/20261017T051939Z-ff961211/wrong_add.sv"
+        ],
+        "ended": "2026-10-17T05:19:40.421443+00:00",
+        "exit_code": 1,
+        "seconds": 0.5220636309995825,
+        "started": "2026-10-17T05:19:39.899406+00:00",
+        "status": "FAIL"
+      },
+      "expected": "Simulator rejects injected fault",
+      "status": "PASS",
+      "test": "wrong_add"
+    },
+    {
+      "execution": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+          "scripts/simulate.py",
+          "--top",
+          "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/validation/20261017T051939Z-ff961211/async_reset.sv"
+        ],
+        "ended": "2026-10-17T05:19:41.671165+00:00",
+        "exit_code": 1,
+        "seconds": 1.2478206060004595,
+        "started": "2026-10-17T05:19:40.423361+00:00",
+        "status": "FAIL"
+      },
+      "expected": "Simulator rejects injected fault",
+      "status": "PASS",
+      "test": "asynchronous_reset"
+    },
+    {
+      "execution": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3",
+          "scripts/simulate.py",
+          "--top",
+          "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/validation/20261017T051939Z-ff961211/wrong_latency.sv"
+        ],
+        "ended": "2026-10-17T05:19:42.021810+00:00",
+        "exit_code": 1,
+        "seconds": 0.34968257899981836,
+        "started": "2026-10-17T05:19:41.672356+00:00",
+        "status": "FAIL"
+      },
+      "expected": "Simulator rejects injected fault",
+      "status": "PASS",
+      "test": "extra_pipeline_stage"
+    }
+  ],
+  "status": "PASS"
+}

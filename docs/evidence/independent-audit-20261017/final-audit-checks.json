@@ -1,0 +1,117 @@
+{
+  "source_files_checked": 79,
+  "changed_original_files": [],
+  "broken_local_documentation_links": [],
+  "tools_on_path": {
+    "iverilog": "/usr/local/bin/iverilog",
+    "vvp": "/usr/local/bin/vvp",
+    "yosys": null,
+    "openroad": null,
+    "docker": null,
+    "klayout": null,
+    "sta": null,
+    "verilator": null
+  },
+  "latest_runs": {
+    "simulation": {
+      "directory": "reports/simulation/20261017T104044Z-b76db996",
+      "status": "PASS",
+      "vectors": 524320,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "metrics": null
+    },
+    "synthesis": {
+      "directory": "reports/synthesis/20261017T104057Z-fb67d182",
+      "status": "PASS",
+      "vectors": null,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "metrics": {
+        "cell_count": 744,
+        "cell_types": {
+          "AND2_X1": 37,
+          "AND3_X1": 8,
+          "AND4_X1": 2,
+          "AOI211_X1": 26,
+          "AOI21_X1": 62,
+          "AOI221_X1": 15,
+          "AOI222_X1": 1,
+          "AOI22_X1": 14,
+          "DFF_X1": 16,
+          "INV_X1": 44,
+          "MUX2_X1": 19,
+          "NAND2_X1": 113,
+          "NAND3_X1": 28,
+          "NAND4_X1": 5,
+          "NOR2_X1": 99,
+          "NOR3_X1": 13,
+          "NOR4_X1": 4,
+          "OAI211_X1": 12,
+          "OAI21_X1": 61,
+          "OAI221_X1": 5,
+          "OAI22_X1": 7,
+          "OAI33_X1": 3,
+          "OR2_X1": 27,
+          "OR3_X1": 12,
+          "OR4_X1": 1,
+          "XNOR2_X1": 57,
+          "XOR2_X1": 53
+        },
+        "combinational_cells": 728,
+        "mapped_cell_area_um2": 879.928,
+        "sequential_area_um2": 72.352,
+        "sequential_cells": 16
+      }
+    },
+    "gate": {
+      "directory": "reports/gate/20261017T104107Z-0f185edb",
+      "status": "PASS",
+      "vectors": 524320,
+      "exit_codes": [
+        0,
+        0
+      ],
+      "metrics": null
+    },
+    "validation": {
+      "directory": "reports/validation/20261017T104042Z-b36b6fe8",
+      "status": "PASS",
+      "vectors": null,
+      "exit_codes": [],
+      "metrics": null
+    },
+    "physical": {
+      "directory": "reports/physical/20261017T104231Z-774b66d5",
+      "status": "NOT RUN",
+      "vectors": null,
+      "exit_codes": [],
+      "metrics": {
+        "buffer_count": null,
+        "core_area_um2": null,
+        "die_area_um2": null,
+        "hold_tns_ns": null,
+        "hold_violating_endpoints": null,
+        "hold_worst_slack_ns": null,
+        "instance_count": null,
+        "physical_cell_area_um2": null,
+        "register_count": null,
+        "routing_violations": null,
+        "setup_tns_ns": null,
+        "setup_violating_endpoints": null,
+        "setup_wns_ns": null,
+        "setup_worst_slack_ns": null,
+        "wirelength_um": null
+      }
+    }
+  },
+  "earlier_repository_status_unchanged": {
+    "Verification_Adder": true,
+    "EDA Algorithm": true
+  },
+  "git_diff_check_exit_code": 0
+}

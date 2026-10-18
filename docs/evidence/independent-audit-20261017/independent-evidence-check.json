@@ -1,0 +1,95 @@
+{
+  "evidence_index": {
+    "checked_files": 35,
+    "mismatches": []
+  },
+  "independent_cell_area_sum": {
+    "method": "sum independently parsed Liberty area per mapped JSON instance",
+    "cell_count": 744,
+    "sequential_cells": 16,
+    "combinational_cells": 728,
+    "area_um2": 879.928,
+    "sequential_area_um2": 72.352,
+    "cell_types": {
+      "INV_X1": 44,
+      "NAND2_X1": 113,
+      "AND2_X1": 37,
+      "XNOR2_X1": 57,
+      "XOR2_X1": 53,
+      "OAI21_X1": 61,
+      "NAND3_X1": 28,
+      "NOR2_X1": 99,
+      "OR3_X1": 12,
+      "OR2_X1": 27,
+      "AOI22_X1": 14,
+      "AOI21_X1": 62,
+      "NOR3_X1": 13,
+      "AND3_X1": 8,
+      "NOR4_X1": 4,
+      "OAI22_X1": 7,
+      "AOI211_X1": 26,
+      "OR4_X1": 1,
+      "AND4_X1": 2,
+      "AOI221_X1": 15,
+      "OAI211_X1": 12,
+      "NAND4_X1": 5,
+      "OAI33_X1": 3,
+      "OAI221_X1": 5,
+      "MUX2_X1": 19,
+      "AOI222_X1": 1,
+      "DFF_X1": 16
+    }
+  },
+  "artifact_inventory": {
+    ".gds": [],
+    ".oas": [],
+    ".odb": [],
+    ".def": [],
+    ".spef": []
+  },
+  "library_sha256": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1",
+  "source_commit_matches": {
+    "rtl/alu_8bit.sv": true,
+    "tb/known_answers.csv": true
+  },
+  "rtl-regression": {
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "vectors": 5280
+  },
+  "rtl-exhaustive": {
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "vectors": 524320
+  },
+  "gate-regression": {
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "vectors": 5280
+  },
+  "gate-exhaustive": {
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "vectors": 524320
+  },
+  "synthesis": {
+    "status": "PASS",
+    "exit_codes": [
+      0,
+      0
+    ],
+    "vectors": null
+  }
+}

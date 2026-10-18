@@ -1,0 +1,12 @@
+python3 -m unittest discover -s tests -v
+test_missing_executable (test_runner.RunnerTests) ... ok
+test_missing_metric_not_zero (test_runner.RunnerTests) ... ok
+test_nonzero_propagates (test_runner.RunnerTests) ... ok
+test_only_final_timing (test_runner.RunnerTests) ... ok
+test_positive_slack_is_not_negative_wns (test_runner.RunnerTests) ... ok
+test_timeout (test_runner.RunnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.205s
+
+OK

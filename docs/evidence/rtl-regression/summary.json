@@ -1,0 +1,55 @@
+{
+  "commands": [
+    {
+      "command": [
+        "iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_alu_top",
+        "-o",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051524Z-af649aba/sim.vvp",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_8bit.sv",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_top.sv",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/tb/tb_alu_top.sv"
+      ],
+      "ended": "2026-10-17T05:15:24.237445+00:00",
+      "exit_code": 0,
+      "seconds": 0.07651342300050601,
+      "started": "2026-10-17T05:15:24.160951+00:00",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "vvp",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051524Z-af649aba/sim.vvp",
+        "+VECTORS=/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051524Z-af649aba/vectors.txt",
+        "+COUNT=5280",
+        "+VCD=/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/simulation/20261017T051524Z-af649aba/waveform.vcd"
+      ],
+      "ended": "2026-10-17T05:15:24.364986+00:00",
+      "exit_code": 0,
+      "seconds": 0.12724466400050005,
+      "started": "2026-10-17T05:15:24.237778+00:00",
+      "status": "PASS"
+    }
+  ],
+  "exhaustive": false,
+  "input_hashes": {
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/rtl/alu_top.sv": "3c9d91f43226f652670a8863311747449e8af9bb84fd9ba5b3fd95a1dc144dc0"
+  },
+  "negative_test": false,
+  "seed": 2026,
+  "simulator": "Icarus Verilog version 13.0 (stable) (v13_0)\n\nCopyright (c) 2000-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Preprocessor version 13.0 (stable) (v13_0)\n\nCopyright (c) 1999-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nIcarus Verilog Parser/Elaborator version 13.0 (stable) (v13_0)\n\nCopyright (c) 1998-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\n FLAGS DLL vvp.tgt\nvvp.tgt: Icarus Verilog VVP Code Generator 13.0 (stable) (v13_0)\n\nCopyright (c) 2001-2026 Stephen Williams (steve@icarus.com)\n\n  This program is free software; you can redistribute it and/or modify\n  it under the terms of the GNU General Public License as published by\n  the Free Software Foundation; either version 2 of the License, or\n  (at your option) any later version.\n\n  This program is distributed in the hope that it will be useful,\n  but WITHOUT ANY WARRANTY; without even the implied warranty of\n  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n  GNU General Public License for more details.\n\n  You should have received a copy of the GNU General Public License along\n  with this program; if not, write to the Free Software Foundation, Inc.,\n  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.",
+  "source_hashes": {
+    "rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "rtl/alu_top.sv": "3c9d91f43226f652670a8863311747449e8af9bb84fd9ba5b3fd95a1dc144dc0",
+    "scripts/common.py": "b00a6f6b3425173b516f44d44c93855e14a13d4393487bb6a226f1d533ecbceb",
+    "scripts/simulate.py": "c3c8dd9524ec4af26ee1875aceedbf3a77c6cb8c69bc1aad625ace097872694b",
+    "tb/known_answers.csv": "1e4415b7ff495f9e616635e111db0747b9c0e1782d99e4fddb355cc94346fb27",
+    "tb/tb_alu_top.sv": "aa94422852d74e41e4efb11a0d6ba2d05a8fb517677436975041d4d6d0986d92"
+  },
+  "status": "PASS",
+  "vectors": 5280
+}

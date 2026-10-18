@@ -1,0 +1,105 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.venv/bin/yowasp-yosys",
+        "-s",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T104057Z-fb67d182/synth.ys"
+      ],
+      "ended": "2026-10-17T10:41:04.812421+00:00",
+      "exit_code": 0,
+      "seconds": 5.036914045998856,
+      "started": "2026-10-17T10:40:59.775453+00:00",
+      "status": "PASS"
+    },
+    {
+      "command": [
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.venv/bin/yowasp-yosys",
+        "-s",
+        "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/synthesis/20261017T104057Z-fb67d182/models.ys"
+      ],
+      "ended": "2026-10-17T10:41:07.250291+00:00",
+      "exit_code": 0,
+      "seconds": 2.417470456002775,
+      "started": "2026-10-17T10:41:04.832813+00:00",
+      "status": "PASS"
+    }
+  ],
+  "corner": "typical 1.10 V 25 C",
+  "ended": "2026-10-17T10:41:07.251135+00:00",
+  "liberty_sha256": "8d540a4d4cf6d09d27c87ad067857a9c0c2eeb023ab7a56e058cd3113db4e9b1",
+  "metrics": {
+    "cell_count": 744,
+    "cell_types": {
+      "AND2_X1": 37,
+      "AND3_X1": 8,
+      "AND4_X1": 2,
+      "AOI211_X1": 26,
+      "AOI21_X1": 62,
+      "AOI221_X1": 15,
+      "AOI222_X1": 1,
+      "AOI22_X1": 14,
+      "DFF_X1": 16,
+      "INV_X1": 44,
+      "MUX2_X1": 19,
+      "NAND2_X1": 113,
+      "NAND3_X1": 28,
+      "NAND4_X1": 5,
+      "NOR2_X1": 99,
+      "NOR3_X1": 13,
+      "NOR4_X1": 4,
+      "OAI211_X1": 12,
+      "OAI21_X1": 61,
+      "OAI221_X1": 5,
+      "OAI22_X1": 7,
+      "OAI33_X1": 3,
+      "OR2_X1": 27,
+      "OR3_X1": 12,
+      "OR4_X1": 1,
+      "XNOR2_X1": 57,
+      "XOR2_X1": 53
+    },
+    "combinational_cells": 728,
+    "mapped_cell_area_um2": 879.928,
+    "sequential_area_um2": 72.352,
+    "sequential_cells": 16
+  },
+  "model_status": "PASS",
+  "models_sha256": "71194efaf6f599655bf8b1a47b86e0dc1fc5a4a5c36f111c9fb71f09f75345ed",
+  "netlist_sha256": "1375f6c52286e8a468fb34d743428a6105a0809d5e7afc3217fec5c36f6fab31",
+  "orfs_revision": "7bcaf475c884e15f674e428aa04dbf92bd0426ed",
+  "platform": "nangate45",
+  "source_hashes": {
+    "constraints/timing.sdc": "a107aecc667e4d8d2f4781c3046e2a8307b658ffccaf46b5cf2a65bb8a5d8364",
+    "flow/config.mk": "35ad3f114164850a67fb7f03d8b7cf21fbcdbbccaa01c002af7e840727d63009",
+    "flow/cts_report.tcl": "71055824251eaa3ec80a586c7eafa21f07aa42246d467fff135b5ae0e07bff6a",
+    "rtl/alu_8bit.sv": "1d9aef598f1ff52c5f10bca44d207e30e2dbe79b5e9ffe169735114ff9a1ce03",
+    "rtl/alu_top.sv": "3c9d91f43226f652670a8863311747449e8af9bb84fd9ba5b3fd95a1dc144dc0",
+    "scripts/analyze_results.py": "2b593554bf83a65ac042008b89a3b4764b15382d8a5183178f284f298a18dedc",
+    "scripts/clean.py": "2eaee835469fa6bf7ec2fabcdffa47739cdbfe5b7e9373a53056c0134fe186fa",
+    "scripts/collect_metrics.py": "d18efeb48e9f492b8b6450d4ae9c5b0a124adbbc10cd1e31335b51b8d7944b56",
+    "scripts/common.py": "abd47c07a80f7e23648a4dda38881a622854396c19a930cdc1b2db3201d4e703",
+    "scripts/fetch_platform.py": "166a25a8c1ff901ae232d0a09969a70a804ed9e23aeaafc1bc0e0eeff9d83b33",
+    "scripts/gate_simulate.py": "c3f5e1660bcc9f0a9980b23f8309a7a740aadc391e89915df8e499e65530508d",
+    "scripts/inspect_gds.py": "5d84f348a83ae2b6857c0573fa7054be9d25dbf7221a2a4971c0184f7c9309c4",
+    "scripts/physical.py": "cce1da6b132a51bf5f9efc8b43d437425c0f082d818481ae5f6030570d13d713",
+    "scripts/report.py": "728f84a15d3e0f1204b10337f2e499f64f97a7b4257ea992dd626832e2f06960",
+    "scripts/run_experiments.py": "ccc915002f05238f35b86ed2de2372bc6daa9dd90c7328ea13cfd7a78dd07357",
+    "scripts/run_physical_flow.sh": "8b3ec13efa56fc927863c353c5093f0fa6642c51cc651fb96ed9524bece30148",
+    "scripts/setup.sh": "c77732ad6f7c2a901df6700bc4aba12904b54150da9c742409466721e56c6f8f",
+    "scripts/simulate.py": "d100e48f8a496caf8ad32a3741538e352edf44bad99e064c7de53a94c1292bc1",
+    "scripts/simulate.sh": "079f065a469560ebed0c69008d91ab1c27dbc5407ee0f0d0507b42a21fe68007",
+    "scripts/synthesize.py": "0553a18f75e1c61e7259b7bec2768a6b33c43d8cecda4aa53ebe26e8aca3b031",
+    "scripts/synthesize.sh": "481a2b32b67bbbac449d722d482132593a6e8f569af0ee139be2b0aa575f684a",
+    "scripts/validate.py": "a32b51a7af443d4afc46fa3efc1aa407fa16de8cdc1a49f82f5b8a846a2812d5",
+    "tb/known_answers.csv": "1e4415b7ff495f9e616635e111db0747b9c0e1782d99e4fddb355cc94346fb27",
+    "tb/tb_alu_top.sv": "aa94422852d74e41e4efb11a0d6ba2d05a8fb517677436975041d4d6d0986d92"
+  },
+  "started": "2026-10-17T10:40:57.494868+00:00",
+  "status": "PASS",
+  "timing_driven": false,
+  "warnings": [
+    "Warning: Detected 2 multi-output cells (for example, \"FA_X1\")."
+  ],
+  "yosys_version": "Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)"
+}

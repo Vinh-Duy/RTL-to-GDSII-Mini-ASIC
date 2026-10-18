@@ -1,0 +1,8 @@
+{
+  "command": [
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/.venv/bin/yowasp-yosys",
+    "-s",
+    "/Users/vinhduy/Desktop/RTL_to_GDSII_Mini_ASIC/reports/audit/independent-20261017T104041Z-9ee2bcd4/mapped_netlist_check.ys"
+  ],
+  "exit_code": 0
+}

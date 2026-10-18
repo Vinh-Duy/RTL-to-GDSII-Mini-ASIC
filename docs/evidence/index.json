@@ -1,0 +1,77 @@
+{
+  "rtl-regression": {
+    "original_run": "reports/simulation/20261017T051524Z-af649aba",
+    "files": {
+      "summary.json": "b4d824ed8c62ebdaa6e2d326aeecccd9af02654e767061ff645175e93b4fa345",
+      "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation.log": "e8a4732c585a6529b1ee16ae5250f90ae3aa9f8a5d1eb5f4dcb8dae53f4e2e78"
+    }
+  },
+  "rtl-exhaustive": {
+    "original_run": "reports/simulation/20261017T090814Z-94580af6",
+    "files": {
+      "summary.json": "44b64f2fa0c779942693ba40f84d45005bb02776ac4577ca7058f25079b89cb8",
+      "compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "simulation.log": "25b18ed83f6ebeb57ff28650d65ff25b8023cb3c5ff0d9db15f357486db8cb6f",
+      "waveform.vcd": "cc2415431b3b5d24ed4bc7c2e6fc0001b0e5c9c3b9716e50a67ed5a003b5f77b"
+    }
+  },
+  "synthesis": {
+    "original_run": "reports/synthesis/20261017T090824Z-97d2c004",
+    "files": {
+      "summary.json": "0d1adf4d525d549334a38bbf232c13f5d9609f307ae9e6c581364d13f8568e14",
+      "synthesis.log": "9a3d2ef08cb51c3b3e3f68e03ce971202512cd1ca8ddc953fdb0431148926d50",
+      "stat.json": "b86b72f2a21ec0df30a06a153a5ee321df36bacdbe19371b55b4ae093f46b734",
+      "alu_top_mapped.v": "1375f6c52286e8a468fb34d743428a6105a0809d5e7afc3217fec5c36f6fab31",
+      "models.log": "160cfff05a3a6be7d4fc0c0ecccdc51ea6214e7da331c388dfdfda32c67d4fc7",
+      "nangate45_functional.v": "71194efaf6f599655bf8b1a47b86e0dc1fc5a4a5c36f111c9fb71f09f75345ed",
+      "netlist.json": "89f748c46d9812e5adfd9c9910563cc5479c0dd43e6a10c48afb005449ab4f31",
+      "synth.ys": "eb934256472a0df6dc3d7bc13cdfd84e1320f7809a601c3fa31fcd9c1ff0a8bb",
+      "models.ys": "c8f6839870ee711a3a2018e4e1c3b7a5e5fd105a20de01f8f7e017fcf8b7027d"
+    }
+  },
+  "gate-exhaustive": {
+    "original_run": "reports/gate/20261017T090438Z-350a5d5a",
+    "files": {
+      "summary.json": "d347fb28ce9672af1873c659530e9646070546adcaddf8457f2d8c3853d873d9",
+      "compile.log": "11d24479e4b854fc585fa97cdfd83a45476c9871066480ebf9fbd9ceb41fecaf",
+      "simulation.log": "4e4aca37c5acf5e771991a6a72b2522388aa3e5e19819872b3a8cd8bf6579f74"
+    }
+  },
+  "gate-regression": {
+    "original_run": "reports/gate/20261017T090833Z-deeba113",
+    "files": {
+      "summary.json": "e700fdc4b0124e987f8308bd28b50a52b280adff0d15bfcff5aac0c30748776b",
+      "compile.log": "272d460be43cbd265ae347e3946dc548252ea95570721e74db46ad48279a7e67",
+      "simulation.log": "0492cca8c542d187a114f5c4b470e2374a638cf5e955f9d7fcb01cfc7ea70705"
+    }
+  },
+  "fault-injection": {
+    "original_run": "reports/validation/20261017T051939Z-ff961211",
+    "files": {
+      "summary.json": "40932b09c7d4773d46e3e542a45f10b9aade2a88e867c7e485bc9f06678106b4",
+      "corrupt_expectation.log": "7063bf2bc6e73e0936727d6fbcbe71b698b496ff883eebc478f27567e6ae824e",
+      "wrong_add.log": "7e2c8005c97e6b5eb3e0115d1d03153e1471dea33b11b797760dc381ae815dab",
+      "asynchronous_reset.log": "b38208c4d2634232c04f6460d2e0d73149a85fc5ea447d76ec972e64e30e942e",
+      "extra_pipeline_stage.log": "138a30ee6ce18dec3663290eac25893db3e4228ada59b820c44d8029bb8b0a39"
+    }
+  },
+  "physical": {
+    "original_run": "reports/physical/20261017T091330Z-e116cc59",
+    "files": {
+      "summary.json": "a441bbf6ba3e1f65c2a7ddfc57d93b49429e770c2c6b015f211edf3f94ad8fce"
+    }
+  },
+  "checks": {
+    "original_run": "reports/checks/20261017T091134Z-0ee0c00f",
+    "files": {
+      "runner_tests.log": "e1a9bc2cc7d5ac0ab7bf0a7b3e7fd89876b8a7b19930f0dff4ade5fd38bd0b8a",
+      "summary.json": "76d4e7693bad487ba37a33ad25d6ca3142bc12ce0593a014ba6955d1cd3159fc",
+      "lint.log": "e543a4cbed95c8c47b5d5d49bc0ee1389e341d044935b7d0f77d284e94a9f616",
+      "experiments_preflight.log": "4d44b42e27e37ea57dca49e2a5f04742b5d6e87e9e8eada385eee92d550abacc",
+      "help.log": "1c6a5439426bbc17cb73307fbd158f483f9ac3242b5626ca08d4a0eee7a1143d",
+      "timing_preflight.log": "4edfae2c823e96fcc482431ee29d3bed162c5da0bf0a90598cb669b895a93db9",
+      "physical_preflight.log": "6887ea6373b4d3101f553808a572fe6d9e2881c4e50f60dbe46574366f94a74f"
+    }
+  }
+}
