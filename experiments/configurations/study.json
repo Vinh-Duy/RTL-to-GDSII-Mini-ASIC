@@ -1,0 +1,11 @@
+{
+  "platform": "nangate45",
+  "baseline_clock_period_ns": 10.0,
+  "baseline_utilization_percent": 30,
+  "placement_density": 0.70,
+  "utilizations_percent": [30, 45, 60],
+  "clock_periods_ns": [],
+  "clock_selection": "Fill with at least three periods after reviewing a successful baseline's real timing report. No clock sweep is currently claimed.",
+  "timeout_seconds_per_stage": 1800,
+  "threads": 2
+}
