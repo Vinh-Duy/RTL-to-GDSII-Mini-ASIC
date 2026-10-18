@@ -1,0 +1,12 @@
+.venv/
+.tools/
+downloads/
+__pycache__/
+*.pyc
+.DS_Store
+reports/*/*/
+reports/*/latest.json
+experiments/results/*/
+!experiments/results/README.md
+reports/*.log
+reports/*.json
