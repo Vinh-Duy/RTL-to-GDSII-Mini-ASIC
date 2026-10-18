@@ -1,0 +1,40 @@
+name: Portable RTL and synthesis checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Install Ubuntu EDA packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog verilator yosys
+          python3 --version
+          iverilog -V
+          verilator --version
+          yosys -V
+      - name: Lint and runner tests
+        run: |
+          make lint test
+          verilator --lint-only --top-module alu_top -Wall -Wno-UNUSEDSIGNAL rtl/alu_8bit.sv rtl/alu_top.sv
+      - name: Regression, fault injection and exhaustive RTL
+        run: |
+          make simulate validate exhaustive
+      - name: Technology mapping and gate simulation
+        run: |
+          python3 scripts/fetch_platform.py
+          make synth gate
+      - name: Preserve execution evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: verification-evidence
+          path: |
+            reports/
+          retention-days: 14
