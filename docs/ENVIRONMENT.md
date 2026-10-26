@@ -60,27 +60,40 @@ or the pinned repository's build instructions for the required Yosys, OpenROAD,
 KLayout and auxiliary dependencies. The current ORFS flow requires more than an
 arbitrary distribution's old Yosys package.
 
-From a copy of this project on that Linux machine:
+From a copy of this project on that Linux machine, build the official ORFS Docker
+image from the pinned revision. ORFS records dependent source revisions in its
+submodules, so initialize them after checking out the project pin:
 
 ```bash
 mkdir -p .tools
 # A full clone/build can be large: review resources before running.
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git .tools/OpenROAD-flow-scripts
 git -C .tools/OpenROAD-flow-scripts checkout 7bcaf475c884e15f674e428aa04dbf92bd0426ed
-# Follow this checkout's official setup/build or prebuilt instructions.
-# Do not run dependency-installation scripts as root without reviewing their effects.
-source .tools/OpenROAD-flow-scripts/env.sh
-export ORFS_ROOT="$PWD/.tools/OpenROAD-flow-scripts"
-yosys -V
-openroad -version
-klayout -v
+git -C .tools/OpenROAD-flow-scripts submodule update --init --recursive
+cd .tools/OpenROAD-flow-scripts
+./build_openroad.sh --threads 2
+cd ../..
+# Mark the just-built image with the checked-out ORFS source revision.
+export ORFS_REVISION="$(git -C .tools/OpenROAD-flow-scripts rev-parse HEAD)"
+test "$ORFS_REVISION" = 7bcaf475c884e15f674e428aa04dbf92bd0426ed
+docker build --pull=false --build-arg ORFS_REVISION="$ORFS_REVISION" \
+  --tag alu-orfs:pinned - <<'DOCKERFILE'
+FROM openroad/orfs:latest
+ARG ORFS_REVISION
+RUN printf '%s\n' "$ORFS_REVISION" > /OpenROAD-flow-scripts/.orfs-revision
+LABEL org.openroad-flow-scripts.revision="$ORFS_REVISION"
+DOCKERFILE
+# Use the immutable local image ID; the runner checks its recorded revision.
+export ORFS_IMAGE="$(docker image inspect alu-orfs:pinned --format '{{.Id}}')"
+make physical-preflight
 make physical
 make timing
-make experiments STUDY=utilization
 ```
 
-The runner checks the checkout revision and tracked-file cleanliness, and records
-actual tool versions. It invokes official `synth`, `floorplan`, `place`, `cts`,
+The build follows the official ORFS [Docker instructions](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts/blob/master/docs/user/BuildWithDocker.md).
+The wrapper adds the checked-out ORFS revision to the official image; the runner
+checks that marker and records actual
+Yosys, OpenROAD and KLayout versions. It invokes official `synth`, `floorplan`, `place`, `cts`,
 `grt`, `route`, and `finish` targets in order. It does not replace upstream stages.
 All generated artifacts use a new project-local `WORK_HOME`. A stage needs both
 exit code zero and its expected nonempty artifact. GDS must additionally pass a
@@ -88,7 +101,7 @@ KLayout read-back check. Inspect the CTS report to confirm a clock tree was actu
 constructed and final reports for timing/routing violations; completed commands
 alone are not a sign-off verdict.
 
-## Docker continuation
+## Existing prebuilt-image option
 
 Do not install Docker Desktop automatically on this host. Docker supports the
 current and two preceding macOS major versions; this macOS 13 installation is
@@ -98,7 +111,10 @@ install/start Docker Desktop explicitly, and check `docker info`. Installing it 
 upgrading macOS requires a separate decision. A Linux machine with Docker Engine
 avoids changing this Mac.
 
-On a suitable Docker host, inspect the official image **before pulling**:
+The runner requires the `.orfs-revision` marker added by the pinned source-build
+steps above. The unmodified upstream prebuilt image does not expose its source
+revision inside the container and cannot pass this project's preflight on its own.
+Review its platform and image provenance before using it:
 
 ```bash
 docker buildx imagetools inspect openroad/orfs:latest
@@ -106,17 +122,10 @@ docker buildx imagetools inspect openroad/orfs:latest
 # Pull a linux/amd64 image only after this review.
 docker pull --platform linux/amd64 openroad/orfs:latest
 docker image inspect openroad/orfs:latest --format '{{.Os}}/{{.Architecture}} {{json .RepoDigests}}'
-# Assign the immutable openroad/orfs@sha256:... reference returned above:
-export ORFS_IMAGE='openroad/orfs@sha256:REPLACE_WITH_INSPECTED_DIGEST'
-make physical
 ```
 
-The example digest is deliberately not a fabricated identifier. The runner rejects
-mutable tags, missing local images, and non-linux/amd64 images; it does not pull.
-It sources the image's ORFS environment before invoking commands. Image-based runs
-record their digest and tool versions and form a **separate baseline** if their ORFS
-revision differs from the pinned source checkout. Record the contained ORFS revision
-where available before comparing experiments. No image has been verified here.
+No image has been built or verified on this Mac. The local source-build route above
+is preferred because it ties the official image build to the pinned checkout.
 
 Intel can run linux/amd64 through Linux virtualization without instruction-set
 emulation. On an Apple Silicon host, this baseline would require an amd64 emulator

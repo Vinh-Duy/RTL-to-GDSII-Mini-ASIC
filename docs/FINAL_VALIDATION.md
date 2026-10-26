@@ -1,5 +1,25 @@
 # Final engineering validation
 
+## Follow-up recheck — 26 October 2026
+
+The current macOS workspace was rechecked after the 17 October audit. `make lint test`
+passed (11 unit tests), `make simulate` passed 5,280 vectors, and `make report`
+completed. `make physical-preflight` and `make physical` still stop before any ORFS
+stage because this host has no Docker, OpenROAD, KLayout or prepared ORFS checkout.
+The latest physical attempt is `reports/physical/20261026T153529Z-cee46489`; all stages remain `NOT RUN`, all
+physical metrics are null, and no GDSII was generated. `make timing` correctly
+returns `NOT RUN` because there is no final timing report. These results are a
+fresh environment check, not a physical-design run. Reproduction commands for a
+Linux host are in [ENVIRONMENT.md](ENVIRONMENT.md).
+
+The physical runner now has a separate `make physical-preflight` target, checks
+that a container contains the pinned ORFS revision, and reports synthesized and
+final cell area separately when those exact-stage JSON metrics exist. Via count
+remains null unless a verified source is available. No RTL or testbench behavior
+was changed in this follow-up.
+
+---
+
 Date: 17 October 2026, Asia/Ho_Chi_Minh. **Current deliverable: synthesis-complete,
 not a complete RTL-to-GDSII implementation.** Evidence snapshots are indexed by
 [file hash and original run directory](evidence/index.json).

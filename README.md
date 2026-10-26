@@ -73,7 +73,7 @@ See [environment and Linux/Docker instructions](docs/ENVIRONMENT.md).
 | Exhaustive RTL suite + inherited known answers | 524,320 vectors passed |
 | Exhaustive mapped gate suite + inherited known answers | 524,320 vectors passed |
 | Injected arithmetic/reset/latency/oracle faults | All four rejected |
-| Runner timeout, exit-code and metric tests | Six passed |
+| Runner, ORFS preflight and metric-parser tests | 11 passed on 26 Oct 2026 |
 
 The exhaustive domain is 524,288 unique binary combinations; the additional
 32 vectors are inherited literal known answers. Clock/reset checks are also
@@ -137,9 +137,9 @@ make synth gate-exhaustive
 make report
 ```
 
-For the full flow, first prepare the compatible Linux/OpenROAD environment described
-in [ENVIRONMENT.md](docs/ENVIRONMENT.md). Then run `make physical`, `make timing`
-and `make experiments STUDY=utilization`. Each run gets a unique directory; previous
+For the full flow, first prepare the pinned ORFS environment described in
+[ENVIRONMENT.md](docs/ENVIRONMENT.md). Run `make physical-preflight` to check the
+tools and revision, then `make physical` and `make timing`. Each run gets a unique directory; previous
 results survive reruns and `make clean`. GitHub Actions has been configured but
 has not executed remotely for this change.
 
