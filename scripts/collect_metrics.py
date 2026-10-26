@@ -4,13 +4,14 @@ import argparse,json,math
 from pathlib import Path
 # OpenROAD report_design_area / report_timing_metrics keys, final_report stage.
 KEYS={
+ 'synthesized_cell_area_um2':'design__instance__area',
+ 'final_cell_area_um2':'design__instance__area',
  'setup_wns_ns':'timing__setup__ws',
  'setup_tns_ns':'timing__setup__tns',
  'hold_worst_slack_ns':'timing__hold__ws',
  'hold_tns_ns':'timing__hold__tns',
  'setup_violating_endpoints':'timing__setup__violating__endpoints',
  'hold_violating_endpoints':'timing__hold__violating__endpoints',
- 'physical_cell_area_um2':'design__instance__area',
  'core_area_um2':'design__core__area',
  'die_area_um2':'design__die__area',
  'instance_count':'design__instance__count',
@@ -30,7 +31,9 @@ def collect(directory):
     for path,data in raw.items():
         if not isinstance(data,dict):continue
         for label,key in KEYS.items():
-            if label in ['routing_violations','wirelength_um']:
+            if label=='synthesized_cell_area_um2':
+                accepted=Path(path).name=='1_2_yosys.json'
+            elif label in ['routing_violations','wirelength_um']:
                 accepted=Path(path).name=='5_2_route.json'
             else:accepted=Path(path).name=='6_report.json'
             if not accepted:continue
@@ -40,6 +43,14 @@ def collect(directory):
             k,v=matches[0]
             if isinstance(v,(float,int)) and math.isfinite(v):
                 out['metrics'][label]=v;out['metric_sources'][label]={'file':path,'key':k}
+    # Compatibility name used by existing status output; it denotes final
+    # standard-cell area, never core or die area.
+    out['metrics']['physical_cell_area_um2']=out['metrics']['final_cell_area_um2']
+    if 'final_cell_area_um2' in out['metric_sources']:
+        out['metric_sources']['physical_cell_area_um2']=out['metric_sources']['final_cell_area_um2']
+    # ORFS route JSON schemas do not consistently expose a via total. Keep this
+    # null unless a future inspected schema adds an explicit, tested source.
+    out['metrics']['via_count']=None
     # WNS convention: no negative slack -> zero. Preserve raw worst slack separately.
     ws=out['metrics']['setup_wns_ns']
     out['metrics']['setup_worst_slack_ns']=ws
