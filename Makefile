@@ -1,8 +1,8 @@
 PYTHON ?= python3
-.PHONY: help setup simulate exhaustive synth gate gate-exhaustive validate lint physical timing experiments report clean test
+.PHONY: help setup simulate exhaustive synth gate gate-exhaustive validate lint physical-preflight physical timing experiments report clean test
 help:
-	@echo 'setup simulate exhaustive synth gate gate-exhaustive validate lint test physical timing experiments report clean'
-	@echo 'Physical: source prepared ORFS env.sh and set ORFS_ROOT; see docs/ENVIRONMENT.md'
+	@echo 'setup simulate exhaustive synth gate gate-exhaustive validate lint test physical-preflight physical timing experiments report clean'
+	@echo 'Physical: see docs/ENVIRONMENT.md for the pinned Linux ORFS setup'
 setup:
 	bash scripts/setup.sh
 simulate:
@@ -23,6 +23,8 @@ test:
 	$(PYTHON) -m unittest discover -s tests -v
 physical:
 	$(PYTHON) scripts/physical.py
+physical-preflight:
+	$(PYTHON) scripts/physical.py --preflight
 timing:
 	$(PYTHON) scripts/report.py --timing
 experiments:

@@ -12,7 +12,10 @@ def backend():
     image=os.environ.get('ORFS_IMAGE');native=os.environ.get('ORFS_ROOT')
     if image:
         if not shutil.which('docker'):raise RuntimeError('Docker is not installed. See docs/ENVIRONMENT.md.')
-        if '@sha256:' not in image:raise RuntimeError('ORFS_IMAGE must use an immutable @sha256 digest; inspect/pull it explicitly first.')
+        # Accept a registry digest or a local image ID. The latter is useful in
+        # CI after building the official ORFS Dockerfile at the pinned revision.
+        if '@sha256:' not in image and not re.fullmatch(r'sha256:[0-9a-f]{64}',image):
+            raise RuntimeError('ORFS_IMAGE must be an immutable registry digest or local sha256 image ID.')
         info=json.loads(subprocess.check_output(['docker','image','inspect',image],text=True,timeout=30))[0]
         if info['Os']!='linux' or info['Architecture']!='amd64':raise RuntimeError('This baseline expects linux/amd64; do not assume ARM compatibility.')
         subprocess.run(['docker','info'],stdout=subprocess.DEVNULL,stderr=subprocess.PIPE,check=True,timeout=30)
@@ -48,6 +51,11 @@ def execute(period=10.0,utilization=30,density=0.70,timeout=1800,threads=2,categ
                 data['commands'].append(v)
                 if v['exit_code']:raise RuntimeError('Container tool preflight failed: '+t)
                 data['backend']['tools'][t]=(d/(t+'-version.log')).read_text()
+            rev=run(prefix+['cat','/OpenROAD-flow-scripts/.orfs-revision'],d/'orfs-revision.log',timeout=120)
+            data['commands'].append(rev)
+            if rev['exit_code'] or (d/'orfs-revision.log').read_text().strip()!=REV:
+                raise RuntimeError('Container ORFS checkout does not match the pinned revision '+REV)
+            data['backend']['revision']=(d/'orfs-revision.log').read_text().strip()
         work=project+'/'+str(d.relative_to(ROOT))
         args=[f'DESIGN_CONFIG={project}/flow/config.mk',f'PROJECT_ROOT={project}',f'WORK_HOME={work}',
               'FLOW_VARIANT=base',f'CLOCK_PERIOD={period}',f'CORE_UTILIZATION={utilization}',
@@ -94,7 +102,20 @@ def execute(period=10.0,utilization=30,density=0.70,timeout=1800,threads=2,categ
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--period',type=float,default=10.0);p.add_argument('--utilization',type=float,default=30)
     p.add_argument('--density',type=float,default=.70);p.add_argument('--timeout',type=int,default=1800)
-    p.add_argument('--threads',type=int,default=2);a=p.parse_args()
+    p.add_argument('--threads',type=int,default=2);p.add_argument('--preflight',action='store_true');a=p.parse_args()
     if a.period<=0 or not 0<a.utilization<100 or not 0<a.density<=1 or a.timeout<=0 or a.threads<1:p.error('Invalid flow parameter')
+    if a.preflight:
+        try:
+            meta,prefix,project,flow=backend()
+            if prefix:
+                rev=subprocess.check_output(prefix+['cat','/OpenROAD-flow-scripts/.orfs-revision'],text=True,timeout=30).strip()
+                if rev!=REV:raise RuntimeError(f'ORFS revision mismatch: require {REV}, got {rev}')
+                meta['revision']=rev
+                meta['tools']={t:subprocess.check_output(prefix+[t,flag],text=True,stderr=subprocess.STDOUT,timeout=120).strip()
+                               for t,flag in [('yosys','-V'),('openroad','-version'),('klayout','-v')]}
+            print(json.dumps({'status':'READY','backend':meta,'design_config':'flow/config.mk','platform':'nangate45'},indent=2))
+            sys.exit(0)
+        except (RuntimeError,OSError,subprocess.SubprocessError,ValueError,KeyError) as e:
+            print('NOT READY:',e);sys.exit(2)
     _,data=execute(a.period,a.utilization,a.density,a.timeout,a.threads)
     sys.exit(0 if data['status']=='PASS' else 2)
