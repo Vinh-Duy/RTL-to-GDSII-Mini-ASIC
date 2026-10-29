@@ -5,6 +5,12 @@ functional verification passed. Physical implementation and timing analysis are
 NOT RUN because the required environment is absent. All numerical results below
 come from local execution; the project title describes the intended full flow.
 
+**Follow-up, 30 October 2026:** the local lint, 14 runner/parser tests and 5,280-vector
+RTL regression passed again. The physical preflight still stops before ORFS starts;
+there are no new placement, timing, routing or GDS results. A manual hosted workflow
+is on the default branch but has not been run. The current task
+therefore remains a synthesis-complete checkpoint.
+
 ## 1. Introduction
 
 This independent undergraduate project takes a previously verified combinational
@@ -197,7 +203,7 @@ broad causal claims. Repeat runs or seed/thread controls would strengthen infere
 | Standard RTL regression | PASS | 5,280 vectors |
 | Exhaustive RTL simulation | PASS | 524,320 vectors |
 | Testbench fault detection | PASS | Four injected faults rejected |
-| Execution/metrics unit tests | PASS | Six tests |
+| Execution, parser and workflow-selection unit tests | PASS | 14 tests on 27 October |
 | Nangate45 mapping | PASS | 744 cells; 879.928 µm² |
 | Exhaustive functional gate simulation | PASS | 524,320 vectors |
 | ORFS synthesis through finish | NOT RUN | Missing physical toolchain |

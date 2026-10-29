@@ -1,5 +1,35 @@
 # Final engineering validation
 
+## Follow-up recheck — 30 October 2026
+
+`make lint test simulate` passed: Icarus lint, 14 Python tests and 5,280 RTL
+vectors. The workflow YAML parses and is manual-only (`workflow_dispatch`). The
+physical host remains unavailable: `make physical-preflight` and `make physical`
+exit 2 before any ORFS command. The latest attempt is
+`reports/physical/20261027T145432Z-66661b19`; all seven physical stages and every
+physical metric are `NOT RUN`/null. `make timing` also exits 2 because there is no
+successful final timing report. No `.gds`, `.odb`, `.def` or routed artifacts were
+found in `reports/`; the utilization study was not run because the baseline did
+not complete.
+
+The manual GitHub Actions workflow builds the pinned ORFS source with the official
+Docker build script, copies platform files into the image, checks the image revision
+label and in-container revision marker, records tool versions and checks the
+Nangate45 typical Liberty hash before invoking the existing flow. It uploads logs,
+reports, summaries, manifests and any final GDS on both success and failure. It is
+on the remote default branch but has not executed. The `gh` CLI is unavailable
+here; launch it by selecting **Actions → ORFS physical baseline and utilization
+sweep → Run workflow** on GitHub. No physical result is claimed.
+
+The experiment runner now writes a manifest containing configuration and source
+hashes, environment, toolchain, per-run metrics and stage status. It serializes
+30%, 45% and 60% utilization points and stops after the first non-PASS run. GDS
+size and SHA-256 are added only after a successful KLayout read-back. Missing via
+counts and timing fields stay null. No plots are generated when there are not
+enough successful measured points.
+
+---
+
 ## Follow-up recheck — 26 October 2026
 
 The current macOS workspace was rechecked after the 17 October audit. `make lint test`
