@@ -1,0 +1,101 @@
+name: ORFS physical baseline and utilization sweep
+
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: orfs-physical-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  physical:
+    # A Linux x86_64 runner is required by the pinned ORFS image.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Check out project
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Check out pinned ORFS
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: The-OpenROAD-Project/OpenROAD-flow-scripts
+          ref: 7bcaf475c884e15f674e428aa04dbf92bd0426ed
+          path: .tools/OpenROAD-flow-scripts
+          submodules: recursive
+
+      - name: Prepare execution evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "reports/ci/${GITHUB_RUN_ID}"
+          make lint test simulate 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/portable-checks.log"
+
+      - name: Build official ORFS container
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd .tools/OpenROAD-flow-scripts
+          test "$(git rev-parse HEAD)" = 7bcaf475c884e15f674e428aa04dbf92bd0426ed
+          ./build_openroad.sh --threads 2 --copy-platforms 2>&1 | tee build_openroad.log
+          cd ../..
+          export ORFS_REVISION="$(git -C .tools/OpenROAD-flow-scripts rev-parse HEAD)"
+          docker build --pull=false --build-arg ORFS_REVISION="$ORFS_REVISION" \
+            --tag alu-orfs:pinned - <<'DOCKERFILE'
+          FROM openroad/orfs:latest
+          ARG ORFS_REVISION
+          RUN printf '%s\n' "$ORFS_REVISION" > /OpenROAD-flow-scripts/.orfs-revision
+          LABEL org.openroad-flow-scripts.revision="$ORFS_REVISION"
+          DOCKERFILE
+          echo "ORFS_IMAGE=$(docker image inspect alu-orfs:pinned --format '{{.Id}}')" >> "$GITHUB_ENV"
+
+      - name: Run physical preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          make physical-preflight 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/preflight.log"
+
+      - name: Run baseline physical design and final timing
+        shell: bash
+        run: |
+          set -euo pipefail
+          make physical 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/physical.log"
+          make timing 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/timing.log"
+
+      - name: Run utilization sweep after successful baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          make experiments STUDY=utilization 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/utilization.log"
+          make report 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/report.log"
+          python3 -m venv .tools/analysis-venv
+          .tools/analysis-venv/bin/python -m pip install --disable-pip-version-check \
+            -r requirements-analysis.txt 2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/analysis-setup.log"
+          summary="$(find reports/experiments -mindepth 2 -maxdepth 2 -name summary.json -type f | sort | tail -n 1)"
+          if [[ -n "$summary" ]]; then
+            .tools/analysis-venv/bin/python scripts/analyze_results.py "$summary" \
+              2>&1 | tee "reports/ci/${GITHUB_RUN_ID}/analysis.log"
+          fi
+
+      - name: Upload run evidence, reports and GDS
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: orfs-physical-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            .tools/OpenROAD-flow-scripts/build_openroad.log
+            reports/ci/${{ github.run_id }}/**
+            reports/physical/**/summary.json
+            reports/physical/**/metrics.json
+            reports/physical/**/gds-inspection.json
+            reports/physical/**/gds-inspection.log
+            reports/physical/**/orfs-revision.log
+            reports/physical/**/reports/nangate45/alu_top/base/**
+            reports/physical/**/logs/nangate45/alu_top/base/**
+            reports/physical/**/results/nangate45/alu_top/base/6_final.gds
+            reports/experiments/**
+            reports/figures/**
+            reports/current-status.json
