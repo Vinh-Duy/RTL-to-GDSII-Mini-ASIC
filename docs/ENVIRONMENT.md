@@ -1,5 +1,20 @@
 # Detected environment and execution options
 
+## Current recheck — 30 October 2026
+
+The Mac still has no Docker, OpenROAD, KLayout or pinned ORFS checkout. The latest
+`make physical` attempt is `reports/physical/20261027T145432Z-66661b19`; it stopped
+before the first ORFS command, with all stages `NOT RUN`. No physical artifacts or
+timing measurements exist. The workflow in
+[physical-baseline.yml](../.github/workflows/physical-baseline.yml) has been pushed,
+but has not been run. The local workspace has no `gh` executable, so launch it from
+GitHub Actions.
+
+Launch it from GitHub **Actions → ORFS physical baseline and utilization sweep → Run workflow**.
+It runs the physical preflight, baseline, final timing, and then the utilization
+study only if the baseline and timing commands succeed. Artifacts are retained for
+30 days, including stage logs/reports, manifests, metrics and any generated GDS.
+
 Audit date: 17 October 2026 (Asia/Ho_Chi_Minh). This is the independent
 `RTL_to_GDSII_Mini_ASIC` workspace, already initialized with an origin remote and
 initial commit `9987e0e3301a8fc74fe35f688eb07a225efb6363`. No commit or push was made.
@@ -71,7 +86,7 @@ git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git .too
 git -C .tools/OpenROAD-flow-scripts checkout 7bcaf475c884e15f674e428aa04dbf92bd0426ed
 git -C .tools/OpenROAD-flow-scripts submodule update --init --recursive
 cd .tools/OpenROAD-flow-scripts
-./build_openroad.sh --threads 2
+./build_openroad.sh --threads 2 --copy-platforms
 cd ../..
 # Mark the just-built image with the checked-out ORFS source revision.
 export ORFS_REVISION="$(git -C .tools/OpenROAD-flow-scripts rev-parse HEAD)"
@@ -90,10 +105,13 @@ make physical
 make timing
 ```
 
-The build follows the official ORFS [Docker instructions](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts/blob/master/docs/user/BuildWithDocker.md).
-The wrapper adds the checked-out ORFS revision to the official image; the runner
-checks that marker and records actual
-Yosys, OpenROAD and KLayout versions. It invokes official `synth`, `floorplan`, `place`, `cts`,
+`--copy-platforms` is required here because ORFS excludes platform files from
+the default Docker build context; without it the Nangate45 design inputs are not
+inside the image. This uses the official `build_openroad.sh` option documented in
+the [ORFS Docker build instructions](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts/blob/master/docs/user/BuildWithDocker.md).
+The wrapper records the checked-out ORFS revision. The runner checks that marker,
+the pinned Nangate45 Liberty hash, and actual Yosys, OpenROAD and KLayout versions.
+It invokes official `synth`, `floorplan`, `place`, `cts`,
 `grt`, `route`, and `finish` targets in order. It does not replace upstream stages.
 All generated artifacts use a new project-local `WORK_HOME`. A stage needs both
 exit code zero and its expected nonempty artifact. GDS must additionally pass a

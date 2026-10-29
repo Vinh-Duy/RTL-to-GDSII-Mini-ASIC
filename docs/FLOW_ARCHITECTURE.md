@@ -49,10 +49,11 @@ its own `results/nangate45/alu_top/base`, `logs`, `reports` and `objects` organi
 Expected artifact names were checked against the pinned upstream Makefile.
 
 The native backend requires the pinned, clean ORFS checkout. The Docker backend
-requires a preinstalled immutable linux/amd64 image and records its digest and
-actual tool versions. It sources the official image environment, uses no network
-during design runs, and removes its own container on timeout. These backends have
-not been end-to-end validated in this host environment.
+requires an immutable linux/amd64 image built from the pinned ORFS source; it
+checks the source revision label and in-container marker, platform-library hash,
+and actual tool versions. It sources the official image environment, uses no
+network during design runs, and removes its own container on timeout. These
+backends have not been end-to-end validated in this host environment.
 
 ## Experimental controls
 
@@ -98,8 +99,10 @@ claims. `make report` checks RTL freshness and indexes current local reports.
 `make clean` only removes Python bytecode and preserves all runs and waveforms.
 
 Portable CI uses Ubuntu packages and logs their versions, so it verifies behavior
-but is not the same pinned YoWASP QoR baseline. The workflow was authored here;
-its remote execution remains NOT RUN. Full physical CI is intentionally omitted.
+but is not the same pinned YoWASP QoR baseline. A separately triggered workflow
+builds official ORFS at the repository pin and runs a physical baseline before
+the utilization sweep. The workflow is published, but its remote execution
+remains NOT RUN until it is launched.
 
 The supported `POST_CTS_TCL` hook writes `report_cts` counts in the CTS process.
 The runner requires positive roots, inserted buffers, subnets and sinks before
