@@ -3,9 +3,10 @@ import json,os,sys,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from common import ROOT,run
+from common import ROOT,run,sources
 from collect_metrics import collect
 from physical import backend,REV,STAGES
+from run_experiments import select_configurations
 class RunnerTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory(dir=ROOT/'.tools/tmp');self.d=Path(self.temp.name)
@@ -49,4 +50,18 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(len(REV),40)
     def test_flow_uses_official_orfs_physical_targets(self):
         self.assertEqual([stage for stage,_ in STAGES],['synth','floorplan','place','cts','grt','route','finish'])
+    def test_utilization_study_uses_existing_serial_points(self):
+        config=json.loads((ROOT/'experiments/configurations/study.json').read_text())
+        self.assertEqual(select_configurations('utilization',config),[(10.0,30),(10.0,45),(10.0,60)])
+        self.assertEqual(config['placement_density'],0.70)
+    def test_source_manifest_covers_experiment_and_workflow_inputs(self):
+        manifest=sources()
+        self.assertIn('Makefile',manifest)
+        self.assertIn('experiments/configurations/study.json',manifest)
+        self.assertIn('.github/workflows/physical-baseline.yml',manifest)
+    def test_analyzer_skips_plot_when_no_physical_run_passed(self):
+        summary=self.d/'empty-summary.json';summary.write_text('[]\n')
+        result=run([sys.executable,str(ROOT/'scripts/analyze_results.py'),str(summary)],self.d/'analyze.log')
+        self.assertEqual(result['exit_code'],0)
+        self.assertIn('no figure generated',(self.d/'analyze.log').read_text())
 if __name__=='__main__':unittest.main()
