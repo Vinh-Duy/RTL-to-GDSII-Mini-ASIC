@@ -15,8 +15,11 @@ def new_run(category):
     p.mkdir(parents=True); return p
 
 def sources():
-    return {str(p.relative_to(ROOT)):sha(p) for folder in ["rtl","tb","scripts","constraints","flow"]
-            for p in sorted((ROOT/folder).rglob("*")) if p.is_file() and "__pycache__" not in p.parts}
+    files=[ROOT/"Makefile"]
+    for folder in ["rtl","tb","tests","scripts","constraints","flow","experiments/configurations",".github/workflows"]:
+        files.extend(sorted((ROOT/folder).rglob("*")))
+    return {str(p.relative_to(ROOT)):sha(p) for p in files if p.is_file()
+            if "__pycache__" not in p.parts}
 def version(exe, flag="--version"):
     try: return subprocess.check_output([exe,flag],stderr=subprocess.STDOUT,text=True,timeout=120).strip()
     except (OSError,subprocess.SubprocessError) as e: return str(e)
